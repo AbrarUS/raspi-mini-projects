@@ -6,7 +6,7 @@ This repository contains various small to medium-sized projects that I built usi
 
 ## Projects List
 
-- [Audio Recorder](./audio-recorder/README.md)
+- [Audio Recorder](./AudioRecorder/README.md)
 - [Temperature Sensor](./temperature-sensor/README.md)
 - [LED Blinker](./led-blinker/README.md)
 - [Wi-Fi Priority Switcher](./wifi-priority-switcher/README.md)
