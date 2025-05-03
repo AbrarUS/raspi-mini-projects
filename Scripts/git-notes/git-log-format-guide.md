@@ -2,20 +2,20 @@
 
 ## 📑 Table of Contents
 
-- [What the command does](#what-the-command-does)
-- [Usage](#usage)
+- [🔍 What the command does](#-what-the-command-does)
+- [🚀 Usage](#-usage)
   - [For Bash or Zsh](#for-bash-or-zsh)
-- [Use `git lp` alias globally](#use-git-lp-alias-globally)
-- [Breakdown of --pretty=format switches](#breakdown-of---prettyformat-switches)
-- [All Common Format Placeholders](#all-common-format-placeholders)
-- [Other Usage Examples](#️other-usage-examples)
+- [🌏 Use `git lp` alias globally](#-use-git-lp-alias-globally)
+- [🧩 Breakdown of --pretty=format switches](#-breakdown-of---prettyformat-switches)
+- [📃 All Common Format Placeholders](#-all-common-format-placeholders)
+- [🛠️ Other Usage Examples](#️-other-usage-examples)
   - [1. One-line Git log with branch/tag references](#1-one-line-git-log-with-branchtag-references)
   - [2. Compact log grouped by author](#2-compact-log-grouped-by-author)
   - [3. Recent history with date and message](#3-recent-history-with-date-and-message)
   - [4. Colored tree view + format](#4-colored-tree-view--format)
   - [5. Filter by author](#5-filter-by-author)
 
-- [Pro Tips](#-pro-tips)
+- [🧠 Pro Tips](#pro-tips)
 
 
 ---  
@@ -30,7 +30,7 @@ git log --pretty=format:"%C(green)%an%Creset, %ar : %C(yellow)%s%Creset - %h"
 This command shows Git commit logs in a **custom format**, using `--pretty=format` to display selected information from each commit in a colorized and human-readable way. Compared to the base command, `git log` which lists many details (commit hash, author, date, message) by default, with `--pretty=format`, you take full control over the output.
 
 ---
-## Usage
+## 🚀 Usage
 
 ### For Bash or Zsh
 
@@ -68,7 +68,7 @@ This command will:
 >⛔ Press `q` to quit.
 
 ---
-## Use `git lp` alias globally
+## 🌏 Use `git lp` alias globally
 To add this as a global alias, open the terminal and use the `git config` command:
 
 `git config --global alias.lp 'log --pretty=format:"%C(auto)%h %d %s %C(blue)(%cr)%C(reset) %C(green)<%an>"` 
@@ -90,7 +90,7 @@ The alias will be stored in the global Git configuration file, typically located
 
 ---
 
-## Breakdown of --pretty=format switches
+## 🧩 Breakdown of --pretty=format switches
 
 Each placeholder inside `format:"..."` represents some metadata about the commit:
 
@@ -123,7 +123,7 @@ With:
 
 ---
 
-## All Common Format Placeholders
+## 📃 All Common Format Placeholders
 
 You can use more than what's in your example. Some of the **most useful format options**:
 
@@ -147,7 +147,7 @@ You can use more than what's in your example. Some of the **most useful format o
 
 ---
 
-## Other Usage Examples
+## 🛠️ Other Usage Examples
 
 ### 1. One-line Git log with branch/tag references
 
@@ -193,7 +193,7 @@ git log --author="Abrar" --pretty=format:"%h %s [%ar]" --since="1 month ago"
 * Your commits in the last month
 
 ---
-## Pro Tips
+## 🧠 Pro Tips
 
 * Use `git log -p` or `git show <commit>` if you want diffs too
 * Add `--name-only` to list modified files per commit
