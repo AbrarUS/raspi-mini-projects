@@ -2,39 +2,95 @@
 
 ## 📑 Table of Contents
 
-- [🔍 What the command does](#-what-the-command-does)
-- [🧩 Breakdown of --pretty=format switches](#-breakdown-of---prettyformat-switches)
-- [🎯 All Common Format Placeholders](#-all-common-format-placeholders)This line starts with three spaces.
-- [🛠️ Efficient Usage Examples](#️-efficient-usage-examples)
+- [What the command does](#what-the-command-does)
+- [Usage](#usage)
+  - [For Bash or Zsh](#for-bash-or-zsh)
+- [Use `git lp` alias globally](#use-git-lp-alias-globally)
+- [Breakdown of --pretty=format switches](#breakdown-of---prettyformat-switches)
+- [All Common Format Placeholders](#all-common-format-placeholders)
+- [Other Usage Examples](#️other-usage-examples)
   - [1. One-line Git log with branch/tag references](#1-one-line-git-log-with-branchtag-references)
   - [2. Compact log grouped by author](#2-compact-log-grouped-by-author)
   - [3. Recent history with date and message](#3-recent-history-with-date-and-message)
   - [4. Colored tree view + format](#4-colored-tree-view--format)
   - [5. Filter by author](#5-filter-by-author)
-- [🧠 Pro Tips](#-pro-tips)
-- [🚀 Usage](#-usage)
-  - [For Bash or Zsh](#for-bash-or-zsh)
-  - [For PowerShell](#for-powershell)
-  - [For Windows Command Prompt (cmd)](#for-windows-command-prompt-cmd)
+
+- [Pro Tips](#-pro-tips)
+
 
 ---  
-&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;
 
-````
+```
 git log --pretty=format:"%C(green)%an%Creset, %ar : %C(yellow)%s%Creset - %h"
-````
+```
 
-### 🔍 What the command does
+## What the command does
 
-This command shows Git commit logs in a **custom format**, using `--pretty=format` to display selected information from each commit in a colorized and human-readable way.
+This command shows Git commit logs in a **custom format**, using `--pretty=format` to display selected information from each commit in a colorized and human-readable way. Compared to the base command, `git log` which lists many details (commit hash, author, date, message) by default, with `--pretty=format`, you take full control over the output.
 
-#### ✅ `git log` base command
+---
+## Usage
 
-Shows commit history. By default, it lists many details (commit hash, author, date, message). But with `--pretty=format`, you take full control over the output.
+### For Bash or Zsh
+
+#### 1. Add this alias to your `.bashrc`, `.bash_profile`, or `.zshrc`:
+
+```bash
+alias glp='cd directory1/directory2/ && git log --pretty=format:"%C(auto)%h %d%Creset %s %C(blue)[%cr] %C(green)<%an>"'
+```
+
+> ⚠️ Note: Do not include spaces around the `=` sign in alias definitions.
+
+#### 2. Apply changes:
+
+After editing your config file, run:
+
+```bash
+source ~/.bashrc    # or ~/.zshrc depending on your shell
+```
+
+#### 3. Use the alias:
+
+Open Git Bash or any terminal and type:
+
+```bash
+glp
+```
+
+This command will:
+
+* Navigate to `directory1/directory2/`
+* Display the commit history in your custom, colorized, one-line log format
+
+>↩️ Press `Enter` to keep loading more history.
+
+>⛔ Press `q` to quit.
+
+---
+## Use `git lp` alias globally
+To add this as a global alias, open the terminal and use the `git config` command:
+
+`git config --global alias.lp 'log --pretty=format:"%C(auto)%h %d %s %C(blue)(%cr)%C(reset) %C(green)<%an>"` 
+
+Then just run `git lp` anywhere to get custom formatted git log.
+
+The alias will be stored in the global Git configuration file, typically located at `~/.gitconfig`. 
+
+```ini
+[user]
+	name = Abrar Shaikh
+	email = xyz@email.com
+[alias]
+	lp = log --pretty=format:\"%C(auto)%h %d %s %C(blue)(%cr)%C(reset) %C(green)<%an>\"
+
+```
+
+> Use the `Preferences: Open User Settings` command to configure global Git settings in Visual Studio Code.
 
 ---
 
-### 🧩 Breakdown of --pretty=format switches
+## Breakdown of --pretty=format switches
 
 Each placeholder inside `format:"..."` represents some metadata about the commit:
 
@@ -67,7 +123,7 @@ With:
 
 ---
 
-### 🎯 All Common Format Placeholders
+## All Common Format Placeholders
 
 You can use more than what's in your example. Some of the **most useful format options**:
 
@@ -91,9 +147,9 @@ You can use more than what's in your example. Some of the **most useful format o
 
 ---
 
-### 🛠️ Efficient Usage Examples
+## Other Usage Examples
 
-#### 1. One-line Git log with branch/tag references
+### 1. One-line Git log with branch/tag references
 
 ```bash
 git log --pretty=format:"%C(auto)%h %d%Creset %s %C(blue)[%cr] %C(green)<%an>"
@@ -104,7 +160,7 @@ git log --pretty=format:"%C(auto)%h %d%Creset %s %C(blue)[%cr] %C(green)<%an>"
 
 
 
-#### 2. Compact log grouped by author
+### 2. Compact log grouped by author
 
 ```bash
 git log --pretty=format:"%C(green)%an%Creset: %s" | sort | uniq -c | sort -nr
@@ -112,7 +168,7 @@ git log --pretty=format:"%C(green)%an%Creset: %s" | sort | uniq -c | sort -nr
 
 * Count and sort commits per author
 
-#### 3. Recent history with date and message
+### 3. Recent history with date and message
 
 ```bash
 git log --since="2 weeks ago" --pretty=format:"%C(blue)%ad%Creset - %s" --date=short
@@ -120,7 +176,7 @@ git log --since="2 weeks ago" --pretty=format:"%C(blue)%ad%Creset - %s" --date=s
 
 * Shows commits from last 2 weeks with short date format
 
-#### 4. Colored tree view + format
+### 4. Colored tree view + format
 
 ```bash
 git log --graph --pretty=format:"%C(yellow)%h%Creset - %C(cyan)%an%Creset: %s" --abbrev-commit
@@ -128,7 +184,7 @@ git log --graph --pretty=format:"%C(yellow)%h%Creset - %C(cyan)%an%Creset: %s" -
 
 * Tree-structured history (great for visualizing branches)
 
-#### 5. Filter by author
+### 5. Filter by author
 
 ```bash
 git log --author="Abrar" --pretty=format:"%h %s [%ar]" --since="1 month ago"
@@ -137,83 +193,11 @@ git log --author="Abrar" --pretty=format:"%h %s [%ar]" --since="1 month ago"
 * Your commits in the last month
 
 ---
-
-### 🧠 Pro Tips
+## Pro Tips
 
 * Use `git log -p` or `git show <commit>` if you want diffs too
 * Add `--name-only` to list modified files per commit
-* Use aliases in `.gitconfig`:
-
-```ini
-[alias]
-    l = log --pretty=format:"%C(auto)%h %d %s %C(blue)(%cr)%C(reset) %C(green)<%an>"
-```
-
-Then just run `git l`.
 
 ---
-### 🚀 Usage
 
-To streamline your workflow, you can create a shell alias that jumps to your project directory and shows the Git log in your preferred custom format in one step.
 
-#### For Bash or Zsh
-
-##### 1. Add this alias to your `.bashrc`, `.bash_profile`, or `.zshrc`:
-
-```bash
-alias glp='cd directory1/directory2/ && git log --pretty=format:"%C(auto)%h %d%Creset %s %C(blue)[%cr] %C(green)<%an>"'
-```
-
-> ⚠️ Note: Do not include spaces around the `=` sign in alias definitions.
-
-##### 2. Apply changes:
-
-After editing your config file, run:
-
-```bash
-source ~/.bashrc    # or ~/.zshrc depending on your shell
-```
-
-##### 3. Use it:
-
-Open Git Bash or any terminal and type:
-
-```bash
-glp
-```
-
-This command will:
-
-* Navigate to `directory1/directory2/`
-* Display the commit history in your custom, colorized, one-line log format
-
->🟢 Press `Enter` to keep loading more history.
-
->⛔ Press `q` to quit.
-
-It’s especially useful when working with frequently accessed repositories and saves time by combining navigation and formatting into a single command.
-
-#### For PowerShell
-
-In your PowerShell profile (e.g., `$PROFILE`), add:
-
-```powershell
-function glp {
-    Set-Location "C:\\path\\to\\directory1\\directory2"
-    git log --pretty=format:"%C(auto)%h %d%Creset %s %C(blue)[%cr] %C(green)<%an>"
-}
-```
-
-#### For Windows Command Prompt (cmd)
-
-Create a `glp.bat` file in a directory included in your system `PATH`:
-
-```bat
-@echo off
-cd /d C:\\path\\to\\directory1\\directory2
-git log --pretty=format:"%C(auto)%h %d%Creset %s %C(blue)[%cr] %C(green)<%an>"
-```
-
-You can now run `glp` from any Command Prompt window.
-
----
