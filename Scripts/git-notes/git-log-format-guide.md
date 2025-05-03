@@ -1,7 +1,6 @@
 # Git Log Pretty Format Guide
 
 ## 📑 Table of Contents
-
 - [🔍 What the command does](#-what-the-command-does)
 - [🚀 Usage](#-usage)
   - [For Bash or Zsh](#for-bash-or-zsh)
@@ -15,7 +14,7 @@
   - [4. Colored tree view + format](#4-colored-tree-view--format)
   - [5. Filter by author](#5-filter-by-author)
 
-- [🧠 Pro Tips](#pro-tips)
+- [🧠 Pro Tips](#-pro-tips)
 
 
 ---  
@@ -25,7 +24,7 @@
 git log --pretty=format:"%C(green)%an%Creset, %ar : %C(yellow)%s%Creset - %h"
 ```
 
-## What the command does
+## 🔍 What the command does
 
 This command shows Git commit logs in a **custom format**, using `--pretty=format` to display selected information from each commit in a colorized and human-readable way. Compared to the base command, `git log` which lists many details (commit hash, author, date, message) by default, with `--pretty=format`, you take full control over the output.
 
