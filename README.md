@@ -12,8 +12,13 @@ This repository contains various small to medium-sized projects that I built usi
 - [Wi-Fi Priority Switcher](./wifi-priority-switcher/README.md)
 - [Bluetooth Audio Setup](./bluetooth-audio/README.md)
 
+
+## Notes
+
+- [Notes](./Notes)
+
+
 ## About
 
 Each project has its own folder containing the source code, images, and instructions to replicate the setup.
-
 Built with ❤️ and Raspberry Pi 🥧
