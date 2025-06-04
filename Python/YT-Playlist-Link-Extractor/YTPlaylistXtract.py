@@ -1,5 +1,6 @@
 import yt_dlp
 import csv
+import datetime
 
 playlist_url = input("Enter the playlist URL: ").strip()
 
