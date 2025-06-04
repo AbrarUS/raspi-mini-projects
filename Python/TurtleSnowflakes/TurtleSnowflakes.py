@@ -21,7 +21,7 @@ def branch():
         pat.left(45)
     pat.right(90)
     pat.forward(90)
-    9999999999999
+    # End of branch drawing
 for i in range(8):
     branch()
     pat.left(45)
